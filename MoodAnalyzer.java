@@ -1,6 +1,6 @@
 package com.bl.testingUserReg;
 
-public class MoodAnalyzer {
+public class MoodAnalyzer{
 	
 	String message;
 	
@@ -12,18 +12,23 @@ public class MoodAnalyzer {
 		this.message = message;
 	}
 	
-	public String analyseMood(){
+	public String analyseMood() throws MoodAnalyzerException {
 		try {
 			message = message.toLowerCase();
 			if(message.contains("sad")) {
 				return "SAD";
 			}
-			else {	
-				return "HAPPY";
-			}
 		}
 		catch(NullPointerException exception) {
+			throw new MoodAnalyzerException("Mood can not be "+ InvalidMood.NULL + " Please enter a valid mood.");
+		}
+		
+		if(message==" ") {
+			throw new MoodAnalyzerException("Mood can not be "+ InvalidMood.EMPTY + " Please enter a valid mood.");
+		}
+		
+		else {
 			return "HAPPY";
-		}		
+		}
 	}
 }
