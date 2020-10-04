@@ -2,7 +2,17 @@ package com.bl.testingUserReg;
 
 public class MoodAnalyzer {
 	
-	public String analyseMood(String message){
+	String message;
+	
+	public MoodAnalyzer(){
+		
+	}
+	
+	public MoodAnalyzer(String message){
+		this.message = message;
+	}
+	
+	public String analyseMood(){
 		message = message.toLowerCase();
 		if(message.contains("sad")) {
 			return "SAD";
